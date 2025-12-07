@@ -2,7 +2,7 @@
 |----------------------------------------------------------
 | MI 349 Final Project: Resume Site Styles
 |----------------------------------------------------------
-| Updated to a Dark Green & Neutral/White MSU Color Palette
+| Final Version: Dark Green & Neutral/White MSU Color Palette
 |----------------------------------------------------------
 */
 
@@ -76,11 +76,29 @@ h1, h2, h3 {
 
 .hero {
     padding: 40px 0;
-    border-bottom: 1px solid var(--secondary-color);
+    /* Removed border-bottom here because it interferes with the grid layout */
+}
+
+/* Home Page Layout (Grid for text and image on desktop) */
+.container.index-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Text takes 2/3, image takes 1/3 */
+    gap: 40px;
+    align-items: center;
+}
+
+.profile-image-section {
+    order: 2; /* Pushes the image section to the right column */
+    text-align: center;
+}
+
+.hero {
+    order: 1; /* Pushes the text content to the left column */
+    border-bottom: none;
 }
 
 .summary-statement {
-    max-width: 65%;
+    max-width: 100%; /* Allows text to use full space of the 2/3 column */
 }
 
 /* Button Styles (Now Green) */
@@ -155,12 +173,19 @@ h1, h2, h3 {
     padding-left: 0;
 }
 
-/* --- 5. Image & Form Styles (General clean up) --- */
+/* --- 5. Image & Form Styles --- */
 .responsive-img {
     max-width: 100%;
     height: auto;
-    border-radius: 50%;
-    border: 5px solid var(--accent-color);
+    /* Default styling—can be overridden */
+}
+
+/* Image override for the MSU logo on the home page (removes circular style) */
+.profile-image-section .responsive-img {
+    border-radius: 0; /* Remove circular styling */
+    border: none;     /* Remove the green border */
+    max-width: 75%;   /* Adjust size for a better fit within the column */
+    display: inline-block;
 }
 
 .contact-form input[type="text"],
@@ -204,7 +229,7 @@ h1, h2, h3 {
     }
 
     .profile-image-section {
-        order: 1; /* Move image back to the top on mobile */
+        order: 1; /* Move image to the top on mobile */
     }
     
     .hero {
@@ -212,33 +237,11 @@ h1, h2, h3 {
     }
 }
 
-/* ========================================================= */
-/* --- CUSTOM LAYOUTS --- */
-/* ========================================================= */
-
-/* Home Page Layout (Grid for text and image on desktop) */
-.container.index-layout {
-    display: grid;
-    grid-template-columns: 2fr 1fr; /* Text takes 2/3, image takes 1/3 */
-    gap: 40px;
-    align-items: center;
-}
-
-.profile-image-section {
-    order: 2; /* Ensures the image section is visually on the right */
-    text-align: center;
-}
-
-.hero {
-    order: 1;
-    border-bottom: none; /* Remove separator line from hero section */
-}
-
 /* --- Footer Alignment (Moving it to the bottom-left) --- */
 footer {
     padding: 20px;
     background-color: var(--primary-color); /* Matches header green */
-    text-align: left; /* CHANGES alignment from center to left */
+    text-align: left; /* Aligns text to the left */
     color: var(--light-text);
     width: 100%;
     box-sizing: border-box;
@@ -247,5 +250,5 @@ footer {
 
 footer p {
     margin: 0;
-    padding-left: 5%; /* Adds a little space from the left edge for aesthetics */
+    padding-left: 5%; /* Adds a little margin from the edge */
 }
