@@ -280,3 +280,36 @@ footer {
     width: 100%;
     box-sizing: border-box;
 }
+
+/* --- 7. Experience Page Logo Styling (NEW) --- */
+
+/* Make the job entry section a positioning context for the logo */
+.job-entry {
+    position: relative; /* CRITICAL: Allows absolute positioning of the logo inside */
+}
+
+/* Container for the logo to control its precise position */
+.company-logo-container {
+    position: absolute; /* Positions relative to the .job-entry box */
+    top: 15px; /* Distance from the top of the box */
+    right: 20px; /* Distance from the right of the box */
+}
+
+/* Styling for the logo image itself */
+.job-logo {
+    max-width: 70px; /* Adjust size as needed, 70px is a good starting point */
+    height: auto;
+    opacity: 0.8; /* Slightly transparent to keep the focus on the text */
+}
+
+/* Update Mobile Responsiveness to handle the logo */
+@media (max-width: 768px) {
+    .company-logo-container {
+        position: static; /* Remove absolute positioning on small screens */
+        text-align: center; /* Center the logo */
+        margin-bottom: 10px;
+    }
+    .job-entry h3 {
+        padding-top: 10px; /* Add padding above the title if logo moves */
+    }
+}
