@@ -3,10 +3,11 @@
 | MI 349 Final Project: Resume Site Styles
 |----------------------------------------------------------
 | Final Version: Dark Green & Neutral/White MSU Color Palette
+| Includes the FIX to push the footer to the very bottom (Sticky Footer).
 |----------------------------------------------------------
 */
 
-/* --- 1. Global Styles and Reset --- */
+/* --- 1. Global Styles and Reset (FIX: Added Flexbox for Sticky Footer) --- */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Professional Font */
     margin: 0;
@@ -14,12 +15,19 @@ body {
     line-height: 1.6;
     color: #f4f4f9; /* Light text color for dark background */
     background-color: #2c2c2c; /* Dark background color (Professional dark gray) */
+    
+    /* STICKY FOOTER FIX: */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures the body takes up at least the full viewport height */
 }
 
 .container {
     max-width: 1100px;
     margin: 0 auto;
     padding: 20px;
+    /* STICKY FOOTER FIX: */
+    flex-grow: 1; /* Allows the main content area to grow and push the footer down */
 }
 
 /* --- 2. Color Palette & Typography --- */
@@ -74,9 +82,8 @@ h1, h2, h3 {
 
 /* --- 4. Content Styles and Components --- */
 
-.hero {
+.banner {
     padding: 40px 0;
-    /* Removed border-bottom here because it interferes with the grid layout */
 }
 
 /* Home Page Layout (Grid for text and image on desktop) */
@@ -92,13 +99,13 @@ h1, h2, h3 {
     text-align: center;
 }
 
-.hero {
+.banner {
     order: 1; /* Pushes the text content to the left column */
     border-bottom: none;
 }
 
 .summary-statement {
-    max-width: 100%; /* Allows text to use full space of the 2/3 column */
+    max-width: 100%;
 }
 
 /* Button Styles (Now Green) */
@@ -177,7 +184,6 @@ h1, h2, h3 {
 .responsive-img {
     max-width: 100%;
     height: auto;
-    /* Default styling—can be overridden */
 }
 
 /* Image override for the MSU logo on the home page (removes circular style) */
@@ -232,12 +238,12 @@ h1, h2, h3 {
         order: 1; /* Move image to the top on mobile */
     }
     
-    .hero {
+    .banner {
         order: 2; /* Move text content below image on mobile */
     }
 }
 
-/* --- Footer Alignment (Moving it to the bottom-left) --- */
+/* --- Footer Alignment (Moved to the bottom-left) --- */
 footer {
     padding: 20px;
     background-color: var(--primary-color); /* Matches header green */
@@ -245,10 +251,4 @@ footer {
     color: var(--light-text);
     width: 100%;
     box-sizing: border-box;
-    margin-top: 40px; 
-}
-
-footer p {
-    margin: 0;
-    padding-left: 5%; /* Adds a little margin from the edge */
 }
