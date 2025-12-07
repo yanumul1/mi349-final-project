@@ -22,6 +22,7 @@ body {
     min-height: 100vh;
 }
 
+/* CRITICAL: Set main container as the reference point for absolute positioning */
 .container {
     max-width: 1100px;
     margin: 0 auto;
@@ -54,7 +55,7 @@ h3 {
     margin-top: 25px;
 }
 
-/* --- 3. Header and Navigation (CRITICAL: Added position: relative) --- */
+/* --- 3. Header and Navigation --- */
 .site-header {
     background-color: var(--primary-color);
     padding: 15px 20px;
@@ -63,8 +64,6 @@ h3 {
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    /* CRITICAL: Allows absolute positioning of the logo relative to the header */
-    position: relative; 
 }
 
 .logo {
@@ -96,8 +95,18 @@ h3 {
 
 /* --- 4. Content Styles and Components --- */
 
+/* CRITICAL: Add padding-right to all main content sections to avoid overlap with the 150px logo */
+.banner, 
+.skills-grid, 
+.contact-info, 
+.job-entry, 
+.contact-form-section {
+    padding-right: 180px; /* 150px logo width + 30px buffer */
+}
+
 .banner {
-    padding: 40px 0;
+    padding-top: 40px; 
+    padding-bottom: 40px;
 }
 
 .summary-statement {
@@ -177,32 +186,25 @@ h3 {
     padding-left: 0;
 }
 
-/* --- 5. Image & Form Styles (Absolute Positioning and Sizing) --- */
+/* --- 5. Logo Positioning and Sizing (New Classes) --- */
 .responsive-img {
     max-width: 100%;
     height: auto;
 }
 
-/* FIX: Absolute Positioning Logo off the Header (into the red box area) */
-.header-logo-container {
-    /* Absolute position it relative to the header */
+/* FINAL FIX: Absolute Positioning Logo (Down and Right) */
+.profile-image-section.absolute-logo-final {
     position: absolute;
-    /* Lock it to the right edge */
-    right: 20px;
-    /* Pushes it slightly down and locks its top edge to the header's top edge */
-    top: 0; 
-    /* Ensures the logo is visible */
-    z-index: 20; 
+    top: 20px; /* Locks it to the top of the main content area (below header) */
+    right: 20px; /* Locks it to the right edge */
+    z-index: 10; 
 }
 
-.header-logo-placement {
-    /* Set the doubled size */
+/* FIX: Doubling the size of the logo to 150px */
+.profile-image-section .large-logo-final {
     max-width: 150px; 
     height: auto;
-    display: block;
-    /* Negative margin pushes the logo DOWN just past the header bar */
-    margin-top: 15px; 
-    
+    display: block; 
 }
 
 .contact-form input[type="text"],
@@ -237,17 +239,25 @@ h3 {
     }
 
     /* CRITICAL MOBILE FIX: Move logo back to normal flow on mobile */
-    .header-logo-container {
+    .profile-image-section.absolute-logo-final {
         position: static;
         text-align: center;
         width: 100%;
-        order: 5; /* Pushes it below the nav links */
-        margin-top: 10px;
+        order: -1; /* Pushes the image above the text on mobile */
+        margin-bottom: 20px;
     }
 
-    .header-logo-placement {
-        max-width: 100px;
-        margin-top: 0;
+    .profile-image-section .large-logo-final {
+        max-width: 100px; /* Smaller logo on mobile */
+    }
+
+    /* Remove extra padding on content sections for mobile */
+    .banner, 
+    .skills-grid, 
+    .contact-info, 
+    .job-entry, 
+    .contact-form-section {
+        padding-right: 20px; 
     }
 }
 
