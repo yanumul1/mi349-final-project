@@ -3,7 +3,7 @@
 | MI 349 Final Project: Resume Site Styles
 |----------------------------------------------------------
 | Final Version: Dark Green & Neutral/White MSU Color Palette
-| FINAL FIX: Logo fixed inside header using Flexbox (far right)
+| FIXES: Logo fixed (far right), Navigation Centered (forced), Professional Form Styling
 |----------------------------------------------------------
 */
 
@@ -205,6 +205,37 @@ h3 {
     list-style-type: none;
     padding-left: 0;
 }
+
+/* --- NEW CONTACT FORM STYLING FOR PROFESSIONAL LOOK --- */
+
+.contact-form label {
+    display: block; /* Makes the label take up its own line */
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--accent-color); /* Highlight the label */
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    
+    /* STYLING FOR PROFESSIONAL LOOK */
+    background-color: #3f3f3f; /* Dark background, slight contrast to main body */
+    color: var(--light-text);
+    border: 1px solid #666; /* Light gray border */
+    border-radius: 4px;
+    box-sizing: border-box; 
+    font-size: 1em;
+}
+
+.contact-form textarea {
+    resize: vertical; /* Allows user to resize vertically */
+}
+
 
 /* --- 6. Mobile Responsiveness (Media Queries) --- */
 @media (max-width: 768px) {
