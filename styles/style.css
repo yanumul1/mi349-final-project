@@ -2,19 +2,18 @@
 |----------------------------------------------------------
 | MI 349 Final Project: Resume Site Styles
 |----------------------------------------------------------
-| Use this file to define your intentional design, color
-| palette, layout, and responsiveness.
+| Updated to a Dark Green & Neutral/White MSU Color Palette
 |----------------------------------------------------------
 */
 
 /* --- 1. Global Styles and Reset --- */
 body {
-    font-family: Arial, sans-serif; /* Replace with your chosen Figma font */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Professional Font */
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    color: #333; /* Dark text color */
-    background-color: #f4f4f9; /* Light background color (Neutral from brand) */
+    color: #f4f4f9; /* Light text color for dark background */
+    background-color: #2c2c2c; /* Dark background color (Professional dark gray) */
 }
 
 .container {
@@ -25,104 +24,143 @@ body {
 
 /* --- 2. Color Palette & Typography --- */
 :root {
-    --primary-color: #004d99;   /* MSU-inspired Blue (Primary from brand) */
-    --accent-color: #ffc425;    /* Accent yellow/gold */
-    --light-bg: #ffffff;
+    --primary-color: #18453D;   /* MSU Dark Green */
+    --accent-color: #C5D7B7;    /* Light Green/Neutral Accent */
+    --secondary-color: #3f3f3f; /* Darker box background */
+    --light-text: #ffffff;
     --dark-text: #222222;
 }
 
 h1, h2, h3 {
-    color: var(--primary-color);
+    color: var(--accent-color); /* Headings in light accent color */
     margin-top: 0;
 }
 
 /* --- 3. Header and Navigation (Using Flexbox for Layout) --- */
 .site-header {
-    background-color: var(--primary-color);
+    background-color: var(--primary-color); /* Dark Green Background */
     padding: 15px 20px;
     color: white;
-    display: flex; /* Common CSS layout technique */
+    display: flex; 
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .logo {
     margin: 0;
-    color: white;
+    color: var(--light-text);
 }
 
 .main-nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
-    display: flex; /* Flexbox for horizontal menu */
-    gap: 20px;
+    display: flex; 
+    gap: 25px; /* Increased gap for better spacing */
 }
 
 .main-nav a {
-    color: white;
+    color: var(--light-text);
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600; /* Bolder look */
     padding: 5px 10px;
 }
 
 .main-nav a:hover {
-    color: var(--accent-color);
+    color: var(--accent-color); /* Light Green on hover */
+    border-bottom: 2px solid var(--accent-color);
 }
 
 /* --- 4. Content Styles and Components --- */
+
+.hero {
+    padding: 40px 0;
+    border-bottom: 1px solid var(--secondary-color);
+}
+
+.summary-statement {
+    max-width: 65%; /* Constrain text width next to image */
+}
+
+/* Button Styles (Now Green) */
 .button {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 12px 25px; /* Slightly larger buttons */
+    margin-right: 15px;
     margin-top: 15px;
     border-radius: 5px;
     text-decoration: none;
     text-align: center;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, color 0.3s;
+    font-weight: bold;
 }
 
 .primary-button {
+    background-color: var(--primary-color); /* Dark Green Button */
+    color: var(--light-text); /* White text */
+    border: 2px solid var(--primary-color);
+}
+
+.primary-button:hover {
+    background-color: #11342f; /* Slightly darker green on hover */
+}
+
+.secondary-button {
+    background-color: transparent;
+    color: var(--accent-color);
+    border: 2px solid var(--accent-color);
+}
+
+.secondary-button:hover {
     background-color: var(--accent-color);
     color: var(--dark-text);
 }
 
-.primary-button:hover {
-    background-color: #e0ac1f;
-}
-
-/* Layout for Experience/Resume page */
+/* Layout for Experience/Resume page (Darker box background) */
 .job-entry {
-    margin-bottom: 25px;
-    padding: 15px;
-    background-color: var(--light-bg);
-    border-left: 5px solid var(--primary-color);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: var(--secondary-color); /* Darker gray background */
+    border-left: 5px solid var(--accent-color); /* Light green accent line */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border-radius: 4px;
 }
 
-/* Layout for Skills page (Using CSS Grid for Layout) */
+.job-entry h3 {
+    color: var(--light-text); /* Job titles should stand out */
+}
+
+/* Layout for Skills page (CSS Grid) */
 .skills-grid {
-    display: grid; /* Common CSS layout technique */
-    grid-template-columns: repeat(3, 1fr); /* 3 columns for desktop */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
     gap: 30px;
     margin-top: 20px;
 }
 
-.skill-category h3 {
-    border-bottom: 2px solid var(--accent-color);
-    padding-bottom: 5px;
+.skill-category {
+    background-color: var(--secondary-color);
+    padding: 20px;
+    border-radius: 4px;
 }
 
-/* --- 5. Image & Form Styles --- */
+.skill-category h3 {
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+}
+
+.skill-category ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+/* --- 5. Image & Form Styles (General clean up) --- */
 .responsive-img {
     max-width: 100%;
     height: auto;
-    display: block;
-}
-
-.contact-form label {
-    display: block;
-    margin-top: 10px;
-    font-weight: bold;
+    border-radius: 50%; /* Example: Makes a headshot circular */
+    border: 5px solid var(--accent-color);
 }
 
 .contact-form input[type="text"],
@@ -131,27 +169,32 @@ h1, h2, h3 {
     width: 100%;
     padding: 10px;
     margin-top: 5px;
-    border: 1px solid #ccc;
+    background-color: var(--secondary-color);
+    color: var(--light-text);
+    border: 1px solid var(--accent-color);
     border-radius: 4px;
-    box-sizing: border-box; /* Ensures padding doesn't affect total width */
+    box-sizing: border-box; 
 }
 
 /* --- 6. Mobile Responsiveness (Media Queries) --- */
-/* Adjustments for tablets and smaller screens (Max-width 768px) */
 @media (max-width: 768px) {
     
     .site-header {
-        flex-direction: column; /* Stack logo and nav vertically */
+        flex-direction: column; 
         text-align: center;
     }
     
     .main-nav ul {
-        flex-direction: column; /* Stack menu items vertically */
+        flex-direction: column; 
         gap: 5px;
         margin-top: 10px;
     }
 
     .skills-grid {
-        grid-template-columns: 1fr; /* Change to a single column layout */
+        grid-template-columns: 1fr; /* Single column on mobile */
+    }
+
+    .summary-statement {
+        max-width: 100%; /* Allow summary text to use full width */
     }
 }
