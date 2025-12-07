@@ -58,9 +58,10 @@ h3 {
 .site-header {
     background-color: var(--primary-color);
     padding: 15px 20px;
+    color: white;
     /* CRITICAL: Use flexbox to distribute space among Title, Nav, and Logo */
     display: flex; 
-    justify-content: space-between; /* Pushes outer elements (Title and Logo) to the edges */
+    justify-content: space-between; /* Pushes elements to the edges */
     align-items: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
@@ -72,10 +73,9 @@ h3 {
     font-weight: 700;
 }
 
-/* CRITICAL CHANGE: Auto margins push the navigation block horizontally into the center */
+/* Add margin to push the main nav closer to the logo/h1 on larger screens */
 .main-nav {
-    margin-left: auto; 
-    margin-right: auto;
+    margin: 0 50px; 
 }
 
 .main-nav ul {
@@ -112,15 +112,15 @@ h3 {
     display: block; 
 }
 
-/* --- 5. Content Styles and Components --- */
+/* --- 5. Content Styles and Components (Remove padding-right fixes) --- */
 
-/* Reset to standard container padding */
+/* Remove the padding-right fixes that were needed for the absolute logo outside the container */
 .banner, 
 .skills-grid, 
 .contact-info, 
 .job-entry, 
 .contact-form-section {
-    padding-right: 20px; 
+    padding-right: 20px; /* Reset to standard container padding */
 }
 
 .banner {
@@ -133,7 +133,7 @@ h3 {
     margin-bottom: 25px;
 }
 
-/* Button Styles */
+/* Button Styles (rest of the file remains standard) */
 .button {
     display: inline-block;
     padding: 12px 25px;
@@ -221,7 +221,7 @@ h3 {
     }
 
     .main-nav {
-        margin: 0; /* Remove auto margin on mobile */
+        margin: 0; /* Remove horizontal margin on mobile */
     }
 
     .skills-grid {
