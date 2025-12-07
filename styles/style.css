@@ -40,8 +40,18 @@ body {
 }
 
 h1, h2, h3 {
-    color: var(--accent-color); /* Headings in light accent color */
+    color: var(--accent-color);
     margin-top: 0;
+}
+
+/* ADD THIS NEW RULE for more consistent spacing around major headings */
+h2 {
+    margin-bottom: 10px; /* Small gap below main header */
+    margin-top: 15px; /* Pushes the header down from the top of the banner section */
+}
+
+h3 {
+    margin-top: 25px; /* PUSHES THE CORE COMPETENCIES HEADER DOWN from the buttons above it */
 }
 
 /* --- 3. Header and Navigation (Using Flexbox for Layout) --- */
@@ -58,6 +68,8 @@ h1, h2, h3 {
 .logo {
     margin: 0;
     color: var(--light-text);
+    font-size: 1.8em; /* INCREASE FONT SIZE (Original was likely 1em or 1.2em) */
+    font-weight: 700; /* Make it bold for more impact */
 }
 
 .main-nav ul {
@@ -106,6 +118,7 @@ h1, h2, h3 {
 
 .summary-statement {
     max-width: 100%;
+    margin-bottom: 25px; /* PUSHES THE BUTTONS DOWN, creating a gap */
 }
 
 /* Button Styles (Now Green) */
