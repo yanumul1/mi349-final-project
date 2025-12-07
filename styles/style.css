@@ -3,7 +3,7 @@
 | MI 349 Final Project: Resume Site Styles
 |----------------------------------------------------------
 | Final Version: Dark Green & Neutral/White MSU Color Palette
-| FIX: Absolute Positioning for Enlarged Logo (Top Right on ALL PAGES)
+| FINAL FIX: Absolute Positioning Logo (Top Right on ALL PAGES)
 |----------------------------------------------------------
 */
 
@@ -27,13 +27,9 @@ body {
     margin: 0 auto;
     padding: 20px;
     flex-grow: 1;
-    /* CRITICAL FIX: Set container to relative for absolute children */
     position: relative; 
-    display: block; /* Ensures content flows naturally */
+    display: block;
 }
-
-/* DELETE: The .content-wrapper rule should be removed */
-
 
 /* --- 2. Color Palette & Typography --- */
 :root {
@@ -58,7 +54,7 @@ h3 {
     margin-top: 25px;
 }
 
-/* --- 3. Header and Navigation --- */
+/* --- 3. Header and Navigation (CRITICAL: Added position: relative) --- */
 .site-header {
     background-color: var(--primary-color);
     padding: 15px 20px;
@@ -67,6 +63,8 @@ h3 {
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    /* CRITICAL: Allows absolute positioning of the logo relative to the header */
+    position: relative; 
 }
 
 .logo {
@@ -100,8 +98,6 @@ h3 {
 
 .banner {
     padding: 40px 0;
-    /* Increase padding on the right side to prevent text overlapping the absolute logo */
-    padding-right: 180px; 
 }
 
 .summary-statement {
@@ -163,8 +159,6 @@ h3 {
     grid-template-columns: repeat(3, 1fr); 
     gap: 30px;
     margin-top: 20px;
-    /* Increase padding on the right side to prevent skills grid overlapping the absolute logo */
-    padding-right: 180px; 
 }
 
 .skill-category {
@@ -189,21 +183,26 @@ h3 {
     height: auto;
 }
 
-/* FIX: Absolute Positioning for Top Right Logo */
-.profile-image-section.absolute-logo {
+/* FIX: Absolute Positioning Logo off the Header (into the red box area) */
+.header-logo-container {
+    /* Absolute position it relative to the header */
     position: absolute;
-    top: 20px; /* Aligns with the top of the main content area (below header) */
-    right: 20px; /* Aligns with the right edge of the container */
-    z-index: 10; /* Ensures it sits on top of any overlapping text */
+    /* Lock it to the right edge */
+    right: 20px;
+    /* Pushes it slightly down and locks its top edge to the header's top edge */
+    top: 0; 
+    /* Ensures the logo is visible */
+    z-index: 20; 
 }
 
-/* FIX: Doubling the size of the logo */
-.profile-image-section .large-logo {
-    max-width: 150px; /* The increased size you requested (approximately double) */
+.header-logo-placement {
+    /* Set the doubled size */
+    max-width: 150px; 
     height: auto;
-    display: block; 
-    border-radius: 0;
-    border: none;
+    display: block;
+    /* Negative margin pushes the logo DOWN just past the header bar */
+    margin-top: 15px; 
+    
 }
 
 .contact-form input[type="text"],
@@ -235,24 +234,20 @@ h3 {
 
     .skills-grid {
         grid-template-columns: 1fr;
-        padding-right: 0; /* Remove extra padding on mobile */
-    }
-
-    .banner {
-        padding-right: 0; /* Remove extra padding on mobile */
     }
 
     /* CRITICAL MOBILE FIX: Move logo back to normal flow on mobile */
-    .profile-image-section.absolute-logo {
+    .header-logo-container {
         position: static;
-        order: -1; /* Place the image above the text content on mobile */
         text-align: center;
-        margin-bottom: 20px;
+        width: 100%;
+        order: 5; /* Pushes it below the nav links */
+        margin-top: 10px;
     }
 
-    /* Center the large logo on mobile */
-    .profile-image-section .large-logo {
-        max-width: 100px; 
+    .header-logo-placement {
+        max-width: 100px;
+        margin-top: 0;
     }
 }
 
