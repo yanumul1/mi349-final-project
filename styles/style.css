@@ -3,11 +3,11 @@
 | MI 349 Final Project: Resume Site Styles
 |----------------------------------------------------------
 | Final Version: Dark Green & Neutral/White MSU Color Palette
-| Includes FIX to put Logo Top Right and Increased Size.
+| FIX: Absolute Positioning for Enlarged Logo (Top Right on ALL PAGES)
 |----------------------------------------------------------
 */
 
-/* --- 1. Global Styles and Reset (FIX: Added Flexbox for Sticky Footer) --- */
+/* --- 1. Global Styles and Reset --- */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -26,9 +26,14 @@ body {
     max-width: 1100px;
     margin: 0 auto;
     padding: 20px;
-    /* STICKY FOOTER FIX: */
     flex-grow: 1;
+    /* CRITICAL FIX: Set container to relative for absolute children */
+    position: relative; 
+    display: block; /* Ensures content flows naturally */
 }
+
+/* DELETE: The .content-wrapper rule should be removed */
+
 
 /* --- 2. Color Palette & Typography --- */
 :root {
@@ -53,7 +58,7 @@ h3 {
     margin-top: 25px;
 }
 
-/* --- 3. Header and Navigation (Using Flexbox for Layout) --- */
+/* --- 3. Header and Navigation --- */
 .site-header {
     background-color: var(--primary-color);
     padding: 15px 20px;
@@ -95,28 +100,8 @@ h3 {
 
 .banner {
     padding: 40px 0;
-}
-
-/* Home Page Layout (Grid for text and image on desktop) */
-.container.index-layout {
-    display: grid;
-    /* FIX: Adjusted column split for better image spacing */
-    grid-template-columns: 3fr 1fr; 
-    gap: 20px;
-    align-items: flex-start; /* Aligns the content to the top */
-    padding-top: 20px; /* Gap below the green header */
-}
-
-.profile-image-section {
-    order: 2; /* Pushes the image section to the right column */
-    text-align: right; /* Aligns image to the right within its column */
-    padding-top: 20px; /* Space from the top edge of the container */
-}
-
-.banner {
-    order: 1; /* Pushes the text content to the left column */
-    border-bottom: none;
-    padding-top: 0; /* Remove padding here, controlled by main container */
+    /* Increase padding on the right side to prevent text overlapping the absolute logo */
+    padding-right: 180px; 
 }
 
 .summary-statement {
@@ -124,7 +109,7 @@ h3 {
     margin-bottom: 25px;
 }
 
-/* Button Styles (Now Green) */
+/* Button Styles */
 .button {
     display: inline-block;
     padding: 12px 25px;
@@ -172,12 +157,14 @@ h3 {
     color: var(--light-text);
 }
 
-/* Layout for Skills page (CSS Grid) */
+/* Layout for Skills page */
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr); 
     gap: 30px;
     margin-top: 20px;
+    /* Increase padding on the right side to prevent skills grid overlapping the absolute logo */
+    padding-right: 180px; 
 }
 
 .skill-category {
@@ -196,19 +183,27 @@ h3 {
     padding-left: 0;
 }
 
-/* --- 5. Image & Form Styles --- */
+/* --- 5. Image & Form Styles (Absolute Positioning and Sizing) --- */
 .responsive-img {
     max-width: 100%;
     height: auto;
 }
 
-/* Image override for the MSU logo on the home page (removes circular style) */
-.profile-image-section .responsive-img {
+/* FIX: Absolute Positioning for Top Right Logo */
+.profile-image-section.absolute-logo {
+    position: absolute;
+    top: 20px; /* Aligns with the top of the main content area (below header) */
+    right: 20px; /* Aligns with the right edge of the container */
+    z-index: 10; /* Ensures it sits on top of any overlapping text */
+}
+
+/* FIX: Doubling the size of the logo */
+.profile-image-section .large-logo {
+    max-width: 150px; /* The increased size you requested (approximately double) */
+    height: auto;
+    display: block; 
     border-radius: 0;
     border: none;
-    /* FIX: Double the size (120px is approximately double the previous size) */
-    max-width: 120px; 
-    display: inline-block;
 }
 
 .contact-form input[type="text"],
@@ -240,27 +235,28 @@ h3 {
 
     .skills-grid {
         grid-template-columns: 1fr;
+        padding-right: 0; /* Remove extra padding on mobile */
     }
 
-    .summary-statement {
-        max-width: 100%;
-    }
-    
-    /* Mobile adjustment for Home page layout */
-    .container.index-layout {
-        grid-template-columns: 1fr; /* Stack columns vertically on mobile */
-    }
-
-    .profile-image-section {
-        order: 1; /* Move image to the top on mobile */
-    }
-    
     .banner {
-        order: 2; /* Move text content below image on mobile */
+        padding-right: 0; /* Remove extra padding on mobile */
+    }
+
+    /* CRITICAL MOBILE FIX: Move logo back to normal flow on mobile */
+    .profile-image-section.absolute-logo {
+        position: static;
+        order: -1; /* Place the image above the text content on mobile */
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    /* Center the large logo on mobile */
+    .profile-image-section .large-logo {
+        max-width: 100px; 
     }
 }
 
-/* --- Footer Alignment (Moved to the bottom-left) --- */
+/* --- Footer Alignment --- */
 footer {
     padding: 20px;
     background-color: var(--primary-color);
