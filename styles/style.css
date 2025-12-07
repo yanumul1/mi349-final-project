@@ -73,7 +73,7 @@ h3 {
 }
 
 /* CRITICAL CHANGE: Auto margins push the navigation block horizontally into the center, 
-   using !important to override any conflicting styles. */
+    using !important to override any conflicting styles. */
 .main-nav {
     margin-left: auto !important; 
     margin-right: auto !important;
@@ -297,9 +297,9 @@ footer {
 
 /* Styling for the logo image itself */
 .job-logo {
-    max-width: 70px; /* Adjust size as needed, 70px is a good starting point */
+    max-width: 100px; /* CHANGED from 70px to 100px for better visibility */
     height: auto;
-    opacity: 0.8; /* Slightly transparent to keep the focus on the text */
+    opacity: 0.8; 
 }
 
 /* Update Mobile Responsiveness to handle the logo */
