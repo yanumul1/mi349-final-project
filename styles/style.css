@@ -167,13 +167,6 @@ h3 {
     border-radius: 4px;
 }
 
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 30px;
-    margin-top: 20px;
-}
-
 .skill-category {
     background-color: var(--secondary-color);
     padding: 20px;
@@ -220,6 +213,11 @@ h3 {
 
 @media (max-width: 768px) {
     
+    .container {
+        padding: 10px;
+        max-width: 100%;
+    }
+
     .site-header {
         flex-direction: column; 
         text-align: center;
@@ -236,7 +234,20 @@ h3 {
     }
 
     .skills-grid {
-        grid-template-columns: 1fr;
+        flex-direction: column; 
+        width: 100%;
+        margin-left: auto; 
+        margin-right: auto;
+        gap: 20px;
+    }
+
+    .skill-column {
+        flex-basis: auto; 
+        width: 100%;
+    }
+
+    .affiliations-heading, .affiliations-container {
+        width: 100%;
     }
 
     .header-logo-container {
