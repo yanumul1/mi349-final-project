@@ -220,7 +220,7 @@ h3 {
     }
 
     .site-header {
-        flex-direction: column; 
+        flex-direction: column !important; 
         text-align: center;
         padding: 15px 10px;
     }
@@ -237,7 +237,7 @@ h3 {
     }
 
     .main-nav ul {
-        flex-direction: column; 
+        flex-direction: column !important; 
         gap: 5px;
         padding: 0;
     }
@@ -252,20 +252,23 @@ h3 {
     }
 
     .skills-grid {
-        flex-direction: column; 
-        width: 100%;
+        display: flex !important;
+        flex-direction: column !important; 
+        width: 100% !important; 
         margin-left: auto; 
         margin-right: auto;
         gap: 20px;
     }
 
     .skill-column {
-        flex-basis: auto; 
-        width: 100%;
+        flex-basis: auto !important; 
+        width: 100% !important;
     }
 
-    .affiliations-heading, .affiliations-container {
-        width: 100%;
+    .affiliations-container {
+        width: 100% !important;
+        margin-left: auto; 
+        margin-right: auto;
     }
 
     footer {
@@ -387,14 +390,12 @@ footer {
     color: #ffffff;
 }
 
-.affiliations-heading {
+.affiliations-container h2 {
     border-bottom: 2px solid var(--primary-color);
     padding-bottom: 10px;
     margin-top: 50px;
-    width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
 }
+
 
 .affiliations-container {
     width: 1200px;
